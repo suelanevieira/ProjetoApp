@@ -5,19 +5,18 @@ import {COLORS, FONT_SIZE} from "../../constants/themes.js";
         backgroundColor: COLORS.white,
         flex: 1,
         padding: 80,
-        justifyContent:"space-between"
+        justifyContent: "space-between"
     },
     containerLogo:{
          alignItems: "center",
     },
 
     logo: {
-        with: 200,
+        with: 100,
         height: 200
     },
     containerInput: {
-        marginBottom:15,
-    
+        marginBottom:15
     },
     input:{
         backgroundColor: COLORS.gray4,

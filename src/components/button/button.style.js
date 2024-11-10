@@ -4,13 +4,19 @@
 
     bnt:{
     with:"100%",
-    backgroundColor: COLORS.rosa,
     padding:12,
     borderRadius:6,
 
 },
+    primary:{
+        backgroundColor: COLORS.rosa,
+},
+     danger: {
+        backgroundColor: COLORS.red,
+},
+    
     text: {
-        color: "#fff",
+        color: "#FFF",
         fontSize: FONT_SIZE.md,
         textAlign: "center"  
     }

@@ -2,6 +2,7 @@ const COLORS = {
     red: "#df5951",
     rosa: "#FC94AF",
     white : "#ffffff",
+    leonade: "#FCBACB",
 
     gray1: "#323434",
     gray2: "#717f7f",
