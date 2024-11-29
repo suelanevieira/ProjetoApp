@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import logo from "../../assets/logo.png";
 import { Image } from "react-native";
@@ -18,8 +18,7 @@ import AbaProfile from "../abaprofile/abaprofile.jsx";
 
 function Main() {
 
-    return <NavigationContainer>
-    <Tab.Navigator>
+    return <Tab.Navigator>
          <Tab.Screen name="Home" component={AbaHome} options={{
           headerTitleAlign: "center",
           headerTitle: () => {
@@ -46,6 +45,7 @@ function Main() {
             }/>
            },
            tabBarShowLabel: false,
+           unmountOnBlur: true,
            tabBarIcon: ({focused}) =>{
              return <Image source={calendar} style={
                {
@@ -64,6 +64,7 @@ function Main() {
            }/>
           },
           tabBarShowLabel: false,
+          unmountOnBlur: true,
           tabBarIcon: ({focused}) =>{
             return <Image source={person} style={
               {
@@ -76,7 +77,6 @@ function Main() {
           }
         }}/>
          </Tab.Navigator>
-   </NavigationContainer>
 }
 
 

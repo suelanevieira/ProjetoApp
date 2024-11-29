@@ -1,13 +1,55 @@
-import { FlatList, Text, View } from "react-native";
+import { Alert, FlatList, Text, View } from "react-native";
 import { styles } from "./abahome.style.js";
-import { costureiras } from "../../constants/data.js";
 import Costureira from "../../components/costureira/costureira.jsx";
 import person from "../../assets/person.png";
 import female from "../../assets/female.png";
+import { Navigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
+import api from "../../constants/api.js";
+
+
+function AbaHome(Props){
+
+    const [costureiras, setCostureiras] = useState([]);
+ 
+function ClickCostureira(id_costureira, name, specialty, icon) {
+    Props.navigation.navigate("Services", {
+        id_costureira,
+        name, 
+        specialty, 
+        icon
+    });
+
+
+}
 
 
 
-function AbaHome(){
+async function LoadCostureiras(){
+    try{
+        const response = await api.get("/costureiras/");
+
+        if (response.data) {
+            setCostureiras(response.data);
+        }
+
+    } catch (error) {
+       if (error.response?.data.error)
+        Alert.alert(error.response.data.error);
+       else
+        Alert.alert("Ocorreu um erro. Tente novamente mais tarde");
+    } 
+  }
+    
+
+
+
+        
+ useEffect(() => {
+    LoadCostureiras();
+ }, []);
+
+
     return <View style={styles.container}>
          <Text style={styles.text}>Agende as suas encomendas</Text>
 
@@ -15,9 +57,12 @@ function AbaHome(){
             keyExtractor={(doc) => doc.id_costureira}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) =>{
-                return <Costureira name={item.name} style={{ width: 10, heigth: 10}}
-                icon={item.icon == "M" ? person : female}
+                return <Costureira
+                id_costureira={item.id_costureira}
+                name={item.name}
+                icon={item.icon}  // M ou F
                 specialty={item.specialty}
+                onPress={ClickCostureira}
                 /> 
      
             }}
